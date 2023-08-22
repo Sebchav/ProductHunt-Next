@@ -7,7 +7,7 @@ import { Formulario, Campo, InputSubmit, Error } from '../components/layout/ui/F
 import firebase from '../firebase';
 
 import useValidacion from "../hooks/useValidacion";
-import validarCrearCuenta from '../validacion/validarCrearCuenta';
+import validarCrearProducto from '../validacion/validarCrearProducto';
 
 const STATE_INICIAL = {
     nombre: "",
@@ -27,7 +27,7 @@ const NuevoProducto = () => {
           handleSubmit,
           handleChange,
           handleBlur
-        } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
+        } = useValidacion(STATE_INICIAL, validarCrearProducto, crearCuenta);
   
   const { nombre, empresa, imagen, url, descripcion } = valores;
 
@@ -82,7 +82,7 @@ return (
 
                   {errores.empresa && <Error>{errores.empresa}</Error>}
 
-                  <Campo>
+                  {/* <Campo>
                       <label htmlFor='imagen'>Imagen</label>
                       <input 
                           type='file'
@@ -94,7 +94,7 @@ return (
                       />
                   </Campo>
 
-                  {errores.imagen && <Error>{errores.imagen}</Error>}
+                  {errores.imagen && <Error>{errores.imagen}</Error>} */}
 
                   <Campo>
                       <label htmlFor='url'>URL</label>
@@ -102,6 +102,7 @@ return (
                           type='url'
                           id='url'
                           name='url'
+                          placeholder='URL de tu producto'
                           value={url}
                           onChange={handleChange}
                           onBlur={handleBlur}
